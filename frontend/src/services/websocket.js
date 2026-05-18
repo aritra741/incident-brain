@@ -1,4 +1,13 @@
-const WS_URL = `ws://${window.location.host}/ws`;
+function wsBaseUrl() {
+  const origin = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
+  if (origin) {
+    const u = new URL(origin);
+    u.protocol = u.protocol === 'https:' ? 'wss:' : 'ws:';
+    return `${u.origin}/ws`;
+  }
+  const proto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+  return `${proto}//${window.location.host}/ws`;
+}
 
 class WebSocketService {
   constructor() {
@@ -20,7 +29,7 @@ class WebSocketService {
           this.ws = null;
         }
 
-        this.ws = new WebSocket(`${WS_URL}/${this.clientId}`);
+        this.ws = new WebSocket(`${wsBaseUrl()}/${this.clientId}`);
 
         this.ws.onopen = () => {
           console.log('WebSocket connected');

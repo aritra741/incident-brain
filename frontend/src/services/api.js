@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+// Production (Vercel + API on Railway): set VITE_API_BASE_URL to the backend origin, e.g. https://xxx.up.railway.app
+// Local dev: omit it and use Vite proxy → /api
+const apiOrigin = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: apiOrigin ? `${apiOrigin}/api` : '/api',
   headers: { 'Content-Type': 'application/json' },
 });
 

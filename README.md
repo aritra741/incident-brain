@@ -168,6 +168,13 @@ docker compose up --build
 
 The UI is at `http://localhost:3000` (nginx on port 3000). The API is at `http://localhost:8000` (including interactive docs at `http://localhost:8000/docs`).
 
+## Easiest split deploy: Railway (API) + Vercel (UI)
+
+1. **Railway** — Create a service from this GitHub repo. Set **Root Directory** to `backend`. Deploy with the `backend/Dockerfile` (default once root is set) or Nixpacks; the Dockerfile listens on **`PORT`** so Railway routing works.
+2. **Railway variables** — Copy values from `backend/.env.example` (Gemini, Supabase, Slack, etc.). Add **`CORS_ORIGINS`** as a JSON array including your Vercel URL, e.g. `["https://your-app.vercel.app"]` (add preview URLs if you use them).
+3. **Vercel** — New project from the same repo. **Root Directory**: `frontend`. Build: `npm run build`, output: `dist`. Add **`VITE_API_BASE_URL`** = your Railway public API origin (e.g. `https://something.up.railway.app`, no trailing slash). See `frontend/.env.example`.
+4. Smoke: open `https://…railway.app/health` and your Vercel URL; confirm the app loads and API calls succeed in the browser network tab.
+
 ## Running Agents
 
 ### Screen Capture Agent (Local)
