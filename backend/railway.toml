@@ -1,0 +1,8 @@
+# Railway: deploy only the API (not repo-root start.sh).
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+healthcheckPath = "/health"
+healthcheckTimeout = 300

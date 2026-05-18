@@ -1,4 +1,5 @@
 #!/bin/bash
+# LOCAL DEV ONLY — do not use on Railway/Vercel. Railway: root directory = backend, Dockerfile deploy.
 set -e
 
 echo "Starting Incident Brain..."
