@@ -1,0 +1,4 @@
+# Local screen-capture agent only (not installed on Railway).
+-r base.txt
+mss>=10.0.0
+pynput>=1.7.7

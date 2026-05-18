@@ -180,6 +180,10 @@ The UI is at `http://localhost:3000` (nginx on port 3000). The API is at `http:/
 ### Screen Capture Agent (Local)
 
 ```bash
+pip install -r backend/requirements/screen-capture.txt
+```
+
+```bash
 # Interval mode (captures every 30s)
 CAPTURE_MODE=interval python agents/screen-capture/capture.py
 
