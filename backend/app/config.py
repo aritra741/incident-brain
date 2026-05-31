@@ -33,7 +33,11 @@ class Settings(BaseSettings):
     SCREEN_CAPTURE_INTERVAL: int = 30
     SCREEN_CAPTURE_ENABLED: bool = False
 
-    CORS_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:5173"]
+    CORS_ORIGINS: list[str] = [
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "https://incident-brain.vercel.app",
+    ]
 
     class Config:
         env_file = ".env"
