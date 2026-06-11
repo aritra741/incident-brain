@@ -13,7 +13,7 @@ from ..websocket.manager import ws_manager
 
 logger = logging.getLogger(__name__)
 
-PREDICTION_INTERVAL_SECONDS = 8
+PREDICTION_INTERVAL_SECONDS = 24 * 60 * 60  # 24 hours
 CONFIDENCE_THRESHOLD = 0.50
 PREDICTION_COOLDOWN_SECONDS = 3
 
